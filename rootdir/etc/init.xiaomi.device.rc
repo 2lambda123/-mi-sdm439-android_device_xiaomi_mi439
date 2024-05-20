@@ -1,6 +1,15 @@
+service vendor.xiaomi_device_script /vendor/bin/init.xiaomi.device.sh
+    class core
+    user root
+    group root
+    oneshot
+
 # Audio
-on property:ro.product.vendor.device=*
-    setprop vendor.audio.mixer_xml.path /vendor/etc/${ro.product.vendor.device}_mixer_paths_sdm439_pm8953.xml
+on property:ro.vendor.xiaomi.device=pine
+    setprop vendor.audio.mixer_xml.path /vendor/etc/pine_mixer_paths_sdm439_pm8953.xml
+
+on property:ro.vendor.xiaomi.device=olive
+    setprop vendor.audio.mixer_xml.path /vendor/etc/olive_mixer_paths_sdm439_pm8953.xml
 
 # Camera - from Xiaomi/olive/olive:10/QKQ1.191014.001/V12.0.2.0.QCNMIXM:user/release-keys
 on boot
@@ -56,6 +65,13 @@ on property:sys.boot_completed=1
     chown cameraserver audio  /data/vendor/camera/golden_rear_dc_cal_wt_ov13b10_gc02m1hw.bin
     chmod 0777 /data/vendor/camera/golden_rear_dc_cal_wt_ov13b10_gc02m1hw.bin
 
+# FM
+on property:hw.fm.init=*
+    write /sys/class/fm/fm_lan_enable/lan_enable ${hw.fm.init}
+
+on property:vendor.hw.fm.ant.enable=*
+    write /sys/class/fm/fm_lan_enable/lan_enable ${vendor.hw.fm.ant.enable}
+
 # IR
 on boot
     chown system system /dev/lirc0
@@ -83,8 +99,8 @@ service vendor.sensors.qti.olive /vendor/bin/sensors.qti.olive
     writepid /dev/cpuset/system-background/tasks
     disabled
 
-on property:ro.product.vendor.device=pine
+on property:ro.vendor.xiaomi.device=pine
     enable vendor.sensors.qti.pine
 
-on property:ro.product.vendor.device=olive
+on property:ro.vendor.xiaomi.device=olive
     enable vendor.sensors.qti.olive

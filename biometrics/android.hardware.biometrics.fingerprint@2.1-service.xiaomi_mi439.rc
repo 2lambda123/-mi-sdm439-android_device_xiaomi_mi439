@@ -8,11 +8,11 @@ service vendor.fps_hal /vendor/bin/hw/android.hardware.biometrics.fingerprint@2.
     disabled
 
 on boot
-    # add for goodix 
+    # add for goodix
     chown system system /dev/goodix_fp
     chmod 0644 /dev/goodix_fp
 
-    # add for fpc 
+    # add for fpc
     chown system system /sys/bus/platform/devices/soc:fpc1020/compatible_all
     chmod 0664 /sys/bus/platform/devices/soc:fpc1020/compatible_all
     chown system system /sys/bus/platform/devices/soc:fpc1020/irq

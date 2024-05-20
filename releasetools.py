@@ -22,7 +22,7 @@ import common
 def FullOTA_InstallEnd(info):
     """
 
-    :param info: 
+    :param info:
 
     """
     OTA_InstallEnd(info)
@@ -32,7 +32,7 @@ def FullOTA_InstallEnd(info):
 def IncrementalOTA_InstallEnd(info):
     """
 
-    :param info: 
+    :param info:
 
     """
     OTA_InstallEnd(info)
@@ -42,9 +42,9 @@ def IncrementalOTA_InstallEnd(info):
 def AddImage(info, basename, dest):
     """
 
-    :param info: 
-    :param basename: 
-    :param dest: 
+    :param info:
+    :param basename:
+    :param dest:
 
     """
     path = "IMAGES/" + basename
@@ -62,7 +62,7 @@ def AddImage(info, basename, dest):
 def OTA_InstallEnd(info):
     """
 
-    :param info: 
+    :param info:
 
     """
     AddImage(info, "dtbo.img", "/dev/block/bootdevice/by-name/dtbo")

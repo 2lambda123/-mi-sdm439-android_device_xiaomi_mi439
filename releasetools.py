@@ -15,8 +15,9 @@
 # limitations under the License.
 
 import hashlib
-import common
 import re
+
+import common
 
 
 def FullOTA_InstallEnd(info):

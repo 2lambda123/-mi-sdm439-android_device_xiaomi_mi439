@@ -18,4 +18,4 @@ export DEVICE=mi439
 export DEVICE_COMMON=sdm439-common
 export VENDOR=xiaomi
 
-"./../../${VENDOR}/${DEVICE_COMMON}/extract-files.sh" "$@"
+"./../../$VENDOR/$DEVICE_COMMON/extract-files.sh" "$@"
